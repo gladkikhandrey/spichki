@@ -25,6 +25,46 @@ int main()
 		switch (answer)
 		{
 		case 1: //ИГРА С КОМПЬЮТЕРОМ
+			do
+			{
+				if (player == 1)
+				{
+					do
+					{
+						cout << "Ваш ход. На столе " << amount << " спичек.\n";
+						cout << "Сколько спичек Вы берете?\n";
+						cin >> num;
+						if (num >= 1 && num <= 10 && num <= amount)
+							correct = true;
+						else
+						{
+							cout << "Неверно! Повторите ввод!\n";
+							correct = false;
+						}
+					} while (!correct);
+
+				}
+				else
+				{
+					do
+					{
+						num = rand() % 10 + 1;
+						if (num > amount)
+							num = amount;
+						cout << "Мой ход! Я взял " << num << " спичек.\n";
+					} while (!correct);
+				}
+				amount -= num;
+				if (player == 1)
+					player = 2;
+				else
+					player = 1;
+			} while (amount > 0);
+			if (player == 1)
+				cout << "Вы победили. Компьютер проиграл.\n";
+			else
+				cout << "Вы проиграли. Выиграл компьютер.\n";
+			break;
 			
 		case 2: // ИГРА C ЧЕЛОВЕКОМ
 			
