@@ -67,6 +67,52 @@ int main()
 			break;
 			
 		case 2: // ИГРА C ЧЕЛОВЕКОМ
+			do
+			{
+				if (player == 1)
+				{
+					do
+					{
+						cout << "Игрок 1, Ваш ход. На столе " << amount << " спичек.\n";
+						cout << "Сколько спичек Вы берете?\n";
+						cin >> num;
+						if (num >= 1 && num <= 10 && num <= amount)
+							correct = true;
+						else
+						{
+							cout << "Неверно! Повторите ввод!\n";
+							correct = false;
+						}
+					} while (!correct);
+
+				}
+				else
+				{
+					do
+					{
+						cout << "Игрок 2, Ваш ход. На столе " << amount << " спичек.\n";
+						cout << "Сколько спичек Вы берете?\n";
+						cin >> num;
+						if (num >= 1 && num <= 10 && num <= amount)
+							correct = true;
+						else
+						{
+							cout << "Неверно! Повторите ввод!\n";
+							correct = false;
+						}
+					} while (!correct);
+				}
+				amount -= num;
+				if (player == 1)
+					player = 2;
+				else
+					player = 1;
+			} while (amount > 0);
+			if (player == 1)
+				cout << "Игрок 1, Вы победили.\n";
+			else
+				cout << "Игрок 2, Вы победили.\n";
+			break;
 			
 		default:
 			cout << "Такого режима нет! Нажми или 1 или 2.\n";
